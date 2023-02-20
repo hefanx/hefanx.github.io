@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Freenom的免费域名托管到Cloudfare上</title>
+      <link href="/2023/02/20/Freenom%E7%9A%84%E5%9F%9F%E5%90%8D%E6%89%98%E7%AE%A1%E5%88%B0Cloudfare%E4%B8%8A/"/>
+      <url>/2023/02/20/Freenom%E7%9A%84%E5%9F%9F%E5%90%8D%E6%89%98%E7%AE%A1%E5%88%B0Cloudfare%E4%B8%8A/</url>
+      
+        <content type="html"><![CDATA[<p>1、首先打开Freenom官网，点击Services——My Domains——Manage Domain——Management Tools——Nameservers——选择Use custom nameservers (enter below)。</p><p>2、打开Cloudfare官网——在搜索框输入需要托管的域名——分别复制Nameserver 1和Nameserver 2的链接，粘贴到Freenom的Nameserver 1和Nameserver 2位置，点击change Nameserver。</p><p>3、切换回到Cloudfare页面，点击完成——再点击快速入门指南——点击开始使用——连续点击4次保存——最后点击完成。</p><p>4、完成上述操作，我们就成功把域名托管到Cloudfare上了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Cloudfare </tag>
+            
+            <tag> 域名托管 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Freenom域名即将到期免费续签的方法</title>
+      <link href="/2023/02/20/Freenom%E5%9F%9F%E5%90%8D%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9C%9F%E5%85%8D%E8%B4%B9%E7%BB%AD%E7%AD%BE%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+      <url>/2023/02/20/Freenom%E5%9F%9F%E5%90%8D%E5%8D%B3%E5%B0%86%E5%88%B0%E6%9C%9F%E5%85%8D%E8%B4%B9%E7%BB%AD%E7%AD%BE%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<ol><li>打开<a href="https://my.freenom.com/">Freenom官网</a>——点击Service——Renew Domains</li><li>找到即将到期的域名（免费域名的最低提前续订时间为14天），点击Renew This Domain，选择续签时长12 Months @ FREE，再点击现在下单Order Now。</li><li>完成atea上述操作，看到过期时间已经变更，这样就完成了Freenom免费域名的续签。</li></ol><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/freenom-logo.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> freenom </tag>
+            
+            <tag> 免费域名 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux常用命令和快捷方式</title>
+      <link href="/2023/02/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2023/02/18/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Linux复制粘贴快捷键"><a href="#Linux复制粘贴快捷键" class="headerlink" title="Linux复制粘贴快捷键"></a>Linux复制粘贴快捷键</h2><ul><li>复制快捷键：Ctrl+Insert</li><li>粘贴快捷键：Shift+Insert</li></ul><h2 id="linux常用基本命令"><a href="#linux常用基本命令" class="headerlink" title="linux常用基本命令"></a>linux常用基本命令</h2><ol><li>is  或list     作用：查看当前文件夹下的内容</li><li>pwd  或print work directory     作用：查看当前所有文件夹</li><li>cd[目录名]  或changge directory     作用：切换文件夹</li><li>touch[文件名]  或touch     作用：如果文件不存在，新建文件</li><li>mkdir[目录名]  或make directory     作用：新建指定文件夹</li><li>rm[文件名]  或remove     作用：删除指定文件</li><li>clear     作用：清屏</li></ol><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Linux%E7%B3%BB%E7%BB%9F.jpeg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Linux常用命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用VS Code写文章非常方便且高效</title>
+      <link href="/2023/02/16/%E4%BD%BF%E7%94%A8VS%20Code%E5%86%99%E6%96%87%E7%AB%A0%E9%9D%9E%E5%B8%B8%E6%96%B9%E4%BE%BF%E4%B8%94%E9%AB%98%E6%95%88/"/>
+      <url>/2023/02/16/%E4%BD%BF%E7%94%A8VS%20Code%E5%86%99%E6%96%87%E7%AB%A0%E9%9D%9E%E5%B8%B8%E6%96%B9%E4%BE%BF%E4%B8%94%E9%AB%98%E6%95%88/</url>
+      
+        <content type="html"><![CDATA[<h2 id="VS-Code简介"><a href="#VS-Code简介" class="headerlink" title="VS Code简介"></a>VS Code简介</h2><p>VS Code是微软2015年推出的一款跨平台源代码编辑器，可以在Windows、macOS、Linux上使用。VS Code除了编写代码，还能用来写文章，只需要在上面安装一个typora插件，就可以使用Markdown语法写文章，该插件可以对Markdown语法进行实时渲染，及所见就是所得。</p><h2 id="VS-Code支持的语音"><a href="#VS-Code支持的语音" class="headerlink" title="VS Code支持的语音"></a>VS Code支持的语音</h2><p>用户可以更改自己喜欢的主题和自定义快捷方式，内置的扩展商店拥有丰富的插件。该编辑器支持的功能包括语法高亮、括号补全、代码折叠和代码片段，VS Code支持多种语言和文件格式的编写，例如：HandleBars、Markdown、Python、Java、PHP、Haxe、Ruby、Sass、Rust、PowerShell、Groovy、R、Makefile、HTML、JSON、TypeScript、Batch、Visual Basic、Swift、Less、SQL、XML、Lua、Go、C++、Ini、Razor、Clojure、C#、Objective-C、CSS、JavaScript、Perl、Coffee Script、Dockerfile、Dart。</p><h2 id="VS-Code安装教程"><a href="#VS-Code安装教程" class="headerlink" title="VS Code安装教程"></a>VS Code安装教程</h2><p>在浏览器搜索<a href="https://code.visualstudio.com/">VS Code官网</a>，进入官网首页下载对应系统的软件（支持Windows、macOS、Linux）。VS Code安装非常简单，双击下载好的安装包，按提示下一步，下一步，下一步操作就可以。</p><p>双击打开VS Code桌面快捷方式，点击扩展商店图标，在搜索框里输入Chinese，然后点击Install安装Chinese (Simplified)插件就可以，再点击【restart】按钮重新启动编辑器就完成汉化了。</p><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/VS%20Code.jpeg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> VS Code </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>360安全卫士关闭弹窗广告设置大全</title>
+      <link href="/2023/02/16/360%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%85%B3%E9%97%AD%E5%BC%B9%E7%AA%97%E5%B9%BF%E5%91%8A%E8%AE%BE%E7%BD%AE%E5%A4%A7%E5%85%A8/"/>
+      <url>/2023/02/16/360%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB%E5%85%B3%E9%97%AD%E5%BC%B9%E7%AA%97%E5%B9%BF%E5%91%8A%E8%AE%BE%E7%BD%AE%E5%A4%A7%E5%85%A8/</url>
+      
+        <content type="html"><![CDATA[<p>1、打开360安全卫士——设置——基本设置——功能定制——取消显示首页安全播报、取消首页主界面搜索框。</p><p>2、基本设置——提醒设置——取消开启软件管家升级提醒。</p><p>3、基本设置——系统右键菜单——取消把使用360进行木马云查杀添加到鼠标右键菜单、取消把使用360管理右键菜单添加到鼠标右键菜单、取消把深度清理垃圾添加到鼠标右键菜单、取消把开启360桌面助手添加到桌面右键菜单。</p><p>4、基本设置——用户体验改善计划——取消参加360用户体验改善计划。</p><p>5、弹窗设置——用户账号及任务——取消完成任务时提示获取到的经验值、取消账号自动登录后提示、取消账号等级升级时提示、取消有新特权时提示。</p><p>6、弹窗设置——垃圾清理提升——把垃圾提醒标准设置为1GB——把提醒清理频率设置为每周。</p><p>7、弹窗设置——场景感知推荐提醒——取消开启场景感知推荐提醒。</p><p>8、弹窗设置——产品推荐提醒——取消开启推荐提醒。</p><p>9、弹窗设置——焦点资讯提醒——取消开启焦点资讯提醒。</p><p>10、弹窗设置——每日趣玩提醒——取消开启每日趣玩。</p><p>11、弹窗设置——长期未关机提醒——取消开启未关机提醒。</p><p>12、弹窗设置——自动追剧提醒——取消开启自动追剧提醒。</p><p>13、弹窗设置——青少年保护模式——选择不自动进入青少年保护模式。</p><p>14、弹窗设置——游戏优化结果提醒——取消开启游戏优化结果提醒。</p><p>15、弹窗设置——今日精选提醒——取消今日精选提醒。</p><p>16、弹窗设置——每日热点——取消开启每日热点。</p><p>17、开机小助手——取消显示不定期开机推广、取消智能等待、取消显示焦点资讯、取消我愿意加入360开机时间调查。</p><p>18、木马查杀——取消开启内容推荐提示——完成设置后点击确定。</p><p>19、重启电脑会在右下角弹出360开机助手——点击弹窗上的设置——取消优先用360浏览器开新闻——再点击默认选项——把设置小助手停留时间设为5秒——然后点击保存。</p><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/360%E5%AE%89%E5%85%A8%E5%8D%AB%E5%A3%AB.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 关闭弹窗广告 </tag>
+            
+            <tag> 360安全卫士 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo常用命令</title>
+      <link href="/2023/02/15/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/"/>
+      <url>/2023/02/15/hexo%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="hexo常用的命令"><a href="#hexo常用的命令" class="headerlink" title="hexo常用的命令"></a>hexo常用的命令</h3><p>hexo new 文章名称     作用：创建一篇新文章</p><p>hexo g  或hexo generate     作用：生成静态页面</p><p>hexo s  或hexo server     作用：在本地映射（预览）</p><p>hexo c  或hexo clean     作用：清理缓存文件</p><p>hexo d   或hexo deploy   作用：推送部署网页</p><p>hexo cl &amp;&amp; hexo g &amp;&amp; hexo s     作用：清理缓存 + 生成静态页面 + 在本地预览</p><p>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d     作用：清理缓存 + 生成静态页面 + 推送部署到云端</p><p>hexo init 博客文件夹     作用：创建自己的博客文件夹</p><p>在英文状态下输入三个 - 再按Enter键，可以直接输入文章标题、日期、作者等。</p><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/hexo-logo.jpeg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo常用命令 </tag>
+            
+            <tag> 学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
