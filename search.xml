@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>如何通过优选IP提升VPS上网速度</title>
+      <link href="/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/"/>
+      <url>/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>默认：已经搭建好了xui面板和在cloudfare上解析好了域名（打开小云朵就是套了CDN）。</p></blockquote><ol><li>下载安装优选IP工具CloudflareSpeedTest。</li></ol><p><a href="https://github.com/XIU2/CloudflareSpeedTest">https://github.com/XIU2/CloudflareSpeedTest</a></p><ol start="2"><li>解压SpeedTest压缩包，进入到CloudflareST.exe目录，在空白处鼠标右键——在终端中打开。</li><li>在Windows PowerShell命令行中输入以下命令，再按Enter键确认。</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\CloudflareST.exe</span><br></pre></td></tr></table></figure><ol start="4"><li>然后就会自动进行测速，最终会优选出10个ping值比较低，网速比较快的ip。</li><li>如果对优选结果不满意（优选IP时需要关闭代理工具），可以自己定义优选规则，执行以下命令，调出帮助文档。</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\CloudflareST.exe -help</span><br></pre></td></tr></table></figure><ol start="6"><li>自定义下载速度下限和平均延迟上限，然后再进行测速，执行以下命令。</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\CloudflareST.exe -sl 5 -tl 200</span><br></pre></td></tr></table></figure><ol start="7"><li>打开并登录xui面板，创建节点，注意：协议选择vless或者vmess，端口选择Cloudflare支持的https的端口，例如：443、2053、2083、2087、2096、8443，传输选择ws。</li><li>把创建的节点导入到v2rayN代理软件中，首先对节点进行测速，随后双击节点信息，在地址栏填写刚才优选出来的ip，在伪装域名栏填写在Cloudfare上解析好的域名，然后点击确定，最后再对已更换优选ip后的节点测速。</li></ol><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E4%BC%98%E9%80%89IP.jpeg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 优选IP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Debian系统防火墙设置常用命令</title>
       <link href="/2023/02/23/Debian%E7%B3%BB%E7%BB%9F%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2023/02/23/Debian%E7%B3%BB%E7%BB%9F%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
