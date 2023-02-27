@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>宝塔面板国际版aapanel安装教程</title>
+      <link href="/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<ol><li>更新Debian系统和安装组件</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt install -y curl &amp;&amp; apt install -y socat &amp;&amp; apt install wget -y</span><br></pre></td></tr></table></figure><ol start="2"><li>安装bbr加速</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot; &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</span><br></pre></td></tr></table></figure><p>如果已经安装了bbr加速，选择4开启bbr加速。</p><ol start="4"><li>安装宝塔面板国际版aapanel</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh &amp;&amp; bash install.sh aapanel</span><br></pre></td></tr></table></figure><p>安装完成之后把aapanel的登录地址、登录账号和登录密码保存到记事本上。</p><ol start="5"><li>登录aapanel面板</li></ol><p>在浏览器打开aapanel的外连接地址，输入账号和密码进行登录。</p><ol start="6"><li>安装搭建博客需要的宝塔组件</li></ol><p>Nginx 1.21、     MySQL 5.7、     PHP 7.4、     phpMyAdmin 5.0</p><ol start="7"><li>给宝塔面板添加SSL证书，开启https请参考下面这篇文章。</li></ol><p><a href="https://www.bt.cn/bbs/thread-105443-1-1.html">【教程贴】如何开启面板SSL并设置浏览器信任自签证书</a></p><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 宝塔面板 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何通过优选IP提升VPS上网速度</title>
       <link href="/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/"/>
       <url>/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/</url>
