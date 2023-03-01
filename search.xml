@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>使用宝塔面板搭建Alist网盘挂载工具</title>
+      <link href="/2023/03/01/%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BAAlist%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7/"/>
+      <url>/2023/03/01/%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BAAlist%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<ol><li>首先需要准备一台服务器，我这里使用的是腾讯轻量云，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是Windterm。</li><li>其次服务器上需要安装宝塔面板，宝塔面板安装教程请参考下面这篇文章：</li></ol><p><a href="https://blog.hefan64.tk/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">宝塔面板国际版aapanel安装教程</a></p><ol start="3"><li>在cloudfare上解析一个二级域名，然后按Win+R，执行cmd，在命令提示符面板里ping一下刚才解析的二级域名，如果可以ping通说明域名解析好了。</li></ol><h2 id="宝塔面板添加网站"><a href="#宝塔面板添加网站" class="headerlink" title="宝塔面板添加网站"></a>宝塔面板添加网站</h2><ol start="4"><li>打开宝塔面板——网站——添加站点——填写站点配置信息如下：</li></ol><ul><li>域名：填写刚才解析的二级域名</li><li>数据库：不创建</li><li>PHP版本：PHP-74（或者纯静态也可以）</li><li>把根目录的地址复制粘贴到记事本上，后面需要用到。</li></ul><ol start="5"><li>完成上述配置信息后点击提交，点击网站——点击刚添加的二级域名——域名管理——再次点击刚添加的二级域名——打开后如果显示“恭喜，站点创建成功”，就可以给站点配置SSL证书了。</li><li>点击网站——点击刚添加的二级域名——SSL——Let’s Encrypt——选中刚添加的二级域名——点击申请，然后宝塔面板就会自动帮我们申请SSL证书——保存——开启强制HTTPS</li></ol><h2 id="安装Alist挂载工具"><a href="#安装Alist挂载工具" class="headerlink" title="安装Alist挂载工具"></a>安装Alist挂载工具</h2><ol start="7"><li>用ssh工具连接服务器，在宝塔面板安装上Alist，安装教程是在官方给出的基础上，末尾增加指定目录进行安装，也就是在官方安装命令后添加刚才网站的根目录地址，例如：</li></ol><ul><li>安装Alist</li></ul><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s install http://43.134.16.15:5244/</span><br></pre></td></tr></table></figure><ul><li>升级Alist</li></ul><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s update http://43.134.16.15:5244/</span><br></pre></td></tr></table></figure><ul><li>卸载Alist</li></ul><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -fsSL &quot;https://alist.nn.ci/v3.sh&quot; | bash -s uninstall http://43.134.16.15:5244/</span><br></pre></td></tr></table></figure><ol start="8"><li>Alist安装成功后会得到如下信息：</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Alist 安装成功！</span><br><span class="line"></span><br><span class="line">访问地址：http://YOUR_IP:5244/</span><br><span class="line"></span><br><span class="line">配置文件路径：/www/wwwroot/alist.hefan64.tk/alist/data/config.json</span><br><span class="line">$查看管理员信息，请执行</span><br><span class="line">cd /www/wwwroot/alist.hefan64.tk/alist</span><br><span class="line">./alist admin</span><br><span class="line"></span><br><span class="line">查看状态：systemctl status alist</span><br><span class="line">启动服务：systemctl start alist</span><br><span class="line">重启服务：systemctl restart alist</span><br><span class="line">停止服务：systemctl stop alist</span><br></pre></td></tr></table></figure><ol start="9"><li>查看管理员信息（查看Alist的用户名和登录密码），执行下面这条命令：</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /www/wwwroot/alist.hefan64.tk/alist</span><br><span class="line">./alist admin</span><br></pre></td></tr></table></figure><p>现在我们已经拥有了Alist的访问地址，以及Alist的用户名和登录密码，可以在浏览器上登录Alist挂载工具了。</p><h2 id="给Alist进行反向代理"><a href="#给Alist进行反向代理" class="headerlink" title="给Alist进行反向代理"></a>给Alist进行反向代理</h2><ol start="10"><li>打开宝塔面板——网站——点击刚才添加的二级域名——反向代理——添加反向代理，填写反向代理配置信息如下：</li></ol><ul><li>代理名称：alist （可以自定义）</li><li>目标URL：<a href="http://43.134.16.15:5244/">http://43.134.16.15:5244</a> （这里填的是Alist的访问地址）</li></ul><ol start="11"><li>完成上述配置信息后点击提交，可以通过下面两步检验反向代理是否成功</li></ol><ul><li>点击反向代理目标URL，查看是否可以正常打开</li><li>点击域名管理——再点击刚才添加的二级域名，查看是否可以正常打开</li></ul><ol start="12"><li>至此宝塔面板安装Alist挂载工具就完成了，想要深入学习请移步至<a href="https://alist.nn.ci/guide/install/script.html">官方文档</a>，Alist的GitHub的项目地址：<a href="https://github.com/alist-org/alist">https://github.com/alist-org/alist</a></li></ol><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Alist%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Alist网盘挂载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WordPress搭建个人博客教程</title>
       <link href="/2023/02/28/WordPress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/"/>
       <url>/2023/02/28/WordPress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</url>
@@ -26,8 +45,8 @@
     
     <entry>
       <title>宝塔面板国际版aapanel安装教程</title>
-      <link href="/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-      <url>/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      <link href="/2023/02/27/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2023/02/27/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
       
         <content type="html"><![CDATA[<ol><li>首先需要准备一台服务器，我这里使用的是腾讯轻量云服务器，安装的镜像是Debian 11，然后把无服务连接到ssh工具上，我这里使用的ssh工具是WindTerm，这是一款GitHub上的免费开源软件，下载地址如下：<a href="https://github.com/kingToolbox/WindTerm">https://github.com/kingToolbox/WindTerm</a></li><li>更新Debian系统和安装组件</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt install -y curl &amp;&amp; apt install -y socat &amp;&amp; apt install wget -y</span><br></pre></td></tr></table></figure><ol start="2"><li>安装bbr加速</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot; &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</span><br></pre></td></tr></table></figure><p>如果已经安装了bbr加速，选择4开启bbr加速。</p><ol start="4"><li>安装宝塔面板国际版aapanel</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh &amp;&amp; bash install.sh aapanel</span><br></pre></td></tr></table></figure><p>安装完成之后把aapanel的登录地址、登录账号和登录密码保存到记事本上。</p><ol start="5"><li>登录aapanel面板</li></ol><p>在浏览器打开aapanel的外连接地址，输入账号和密码进行登录。</p><ol start="6"><li>安装搭建博客需要的宝塔组件</li></ol><p>Nginx 1.21、     MySQL 5.7、     PHP 7.4、     phpMyAdmin 5.0</p><ol start="7"><li>给宝塔面板添加SSL证书，开启https请参考下面这篇文章。</li></ol><p><a href="https://www.bt.cn/bbs/thread-105443-1-1.html">【教程贴】如何开启面板SSL并设置浏览器信任自签证书</a></p><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF.jpg"></p>]]></content>
       
