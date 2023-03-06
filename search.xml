@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>可道云kodcloud搭建私人网盘教程【宝塔面板】</title>
+      <link href="/2023/03/04/%E5%8F%AF%E9%81%93%E4%BA%91kodcloud%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/"/>
+      <url>/2023/03/04/%E5%8F%AF%E9%81%93%E4%BA%91kodcloud%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/</url>
+      
+        <content type="html"><![CDATA[<ol><li>首先需要准备一台服务器，我这里使用的是腾讯轻量云，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是Windterm。</li><li>其次服务器上需要安装宝塔面板，宝塔面板安装教程请参考下面这篇文章：</li></ol><p><a href="https://blog.hefan64.tk/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">宝塔面板国际版aapanel安装教程</a></p><ol start="3"><li>在cloudfare上解析一个二级域名，然后按Win+R，执行cmd，在命令提示符面板里ping一下刚才解析的二级域名，如果可以ping通说明域名解析好了。</li></ol><h2 id="宝塔面板添加网站"><a href="#宝塔面板添加网站" class="headerlink" title="宝塔面板添加网站"></a>宝塔面板添加网站</h2><ol start="4"><li>打开宝塔面板——网站——添加站点——填写站点配置信息如下：</li></ol><ul><li>域名：填写刚才解析的二级域名</li><li>数据库：选择MySQL，数据库账号密码选择默认就可以</li><li>PHP版本：选择PHP-74</li><li>记得先把数据库的账号和密码复制保存到记事本上，后面需要用到。</li></ul><ol start="5"><li>完成上述配置信息后点击提交，点击网站——点击刚添加的二级域名——域名管理——再次点击刚添加的二级域名——打开后如果显示“恭喜，站点创建成功”，就可以给站点配置SSL证书了。</li><li>点击网站——点击刚添加的二级域名——SSL——Let’s Encrypt——选中刚添加的二级域名——点击申请，然后宝塔面板就会自动帮我们申请SSL证书——保存——开启强制HTTPS。</li><li>点击软件商店——搜索Redis——下载安装Redis——应用分类：已安装——点击PHP-7.4——安装扩展——安装Redis扩展。</li></ol><h2 id="安装可道云网盘"><a href="#安装可道云网盘" class="headerlink" title="安装可道云网盘"></a>安装可道云网盘</h2><ol start="8"><li>打开<a href="https://kodcloud.com/">可道云官网</a>，点击下载，选择下载kodbox 服务器端。打开宝塔面板——点击网站——根目录——删除根目录下的全部文件——上传刚才下载的可道云压缩包——右键解压可道云压缩包——删除可道云压缩包。</li><li>点击网站——点击刚添加的二级域名——域名管理——再次点击刚添加的二级域名——来到可道云的系统安装页面——环境监测界面提示我们需要开启shell_exec、exec函数。</li><li>点击软件商店——应用分类：已安装——点击PHP-7.4——禁用函数——点击shell_exec后面的删除（相当于解禁函数）——再点击exec后面的删除（相当于解禁函数）——保存——点击左上角的服务——重启PHP-7.4。</li><li>切换回到可道云的系统安装页面——刷新一下网页就可以了——点击下一步——填写数据库配置信息如下：</li></ol><ul><li>数据库类型：MySQL</li><li>服务器：127.0.0.1 （保持默认就可以）</li><li>用户名：复制粘贴刚才保存的数据库账号</li><li>密码：复制粘贴刚才保存的数据库密码</li><li>数据库：复制粘贴刚才保存的数据库账号</li><li>存储引擎：InnoBD （保证默认就可以）</li><li>系统缓存类型：Redis</li></ul><ol start="12"><li>完成上述配置信息后点击确定，自行设置可道云的账号和密码，点击确定，然后跳转到登录页面输入可道云的账号和密码就可以登录了，至此可道云网盘搭建就完成了。</li></ol><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E5%8F%AF%E9%81%93%E4%BA%91.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 网盘搭建 </tag>
+            
+            <tag> 可道云kodcloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cloudreve搭建个人网盘教程【宝塔面板】</title>
       <link href="/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/"/>
       <url>/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/</url>
