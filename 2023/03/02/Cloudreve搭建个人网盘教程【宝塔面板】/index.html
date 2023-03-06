@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Cloudreve搭建个人网盘教程【宝塔面板】 | Hefanx</title><meta name="author" content="hefanx"><meta name="copyright" content="hefanx"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="首先需要准备一台服务器，我这里使用的是腾讯轻量云，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是Windterm。 其次服务器上需要安装宝塔面板，宝塔面板安装教程请参考下面这篇文章：  宝塔面板国际版aapanel安装教程  在cloudfare上解析一个二级域名，然后按Win+R，执行cmd，在命令提示符面板里ping一下刚才解析的二级域名，如果可以p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cloudreve搭建个人网盘教程【宝塔面板】">
+<meta property="og:url" content="https://blog.hefan64.tk/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/index.html">
+<meta property="og:site_name" content="Hefanx">
+<meta property="og:description" content="首先需要准备一台服务器，我这里使用的是腾讯轻量云，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是Windterm。 其次服务器上需要安装宝塔面板，宝塔面板安装教程请参考下面这篇文章：  宝塔面板国际版aapanel安装教程  在cloudfare上解析一个二级域名，然后按Win+R，执行cmd，在命令提示符面板里ping一下刚才解析的二级域名，如果可以p">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg">
+<meta property="article:published_time" content="2023-03-02T09:50:20.000Z">
+<meta property="article:modified_time" content="2023-03-02T10:28:25.090Z">
+<meta property="article:author" content="hefanx">
+<meta property="article:tag" content="Cloudreve">
+<meta property="article:tag" content="网盘搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg"><link rel="shortcut icon" href="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/wpa%20logo.png"><link rel="canonical" href="https://blog.hefan64.tk/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cloudreve搭建个人网盘教程【宝塔面板】',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-02 18:28:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/blog%20avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Hefanx"><span class="site-name">Hefanx</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Cloudreve搭建个人网盘教程【宝塔面板】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-02T09:50:20.000Z" title="发表于 2023-03-02 17:50:20">2023-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-02T10:28:25.090Z" title="更新于 2023-03-02 18:28:25">2023-03-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Cloudreve搭建个人网盘教程【宝塔面板】"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+<li>首先需要准备一台服务器，我这里使用的是腾讯轻量云，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是Windterm。</li>
+<li>其次服务器上需要安装宝塔面板，宝塔面板安装教程请参考下面这篇文章：</li>
+</ol>
+<p><a href="https://blog.hefan64.tk/2023/02/28/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">宝塔面板国际版aapanel安装教程</a></p>
+<ol start="3">
+<li>在cloudfare上解析一个二级域名，然后按Win+R，执行cmd，在命令提示符面板里ping一下刚才解析的二级域名，如果可以ping通说明域名解析好了。</li>
+</ol>
+<h2 id="宝塔面板添加网站"><a href="#宝塔面板添加网站" class="headerlink" title="宝塔面板添加网站"></a>宝塔面板添加网站</h2><ol start="4">
+<li>打开宝塔面板——网站——添加站点——填写站点配置信息如下：</li>
+</ol>
+<ul>
+<li>域名：填写刚才解析的二级域名</li>
+<li>数据库：不创建</li>
+<li>PHP版本：PHP-74（或者纯静态也可以）</li>
+</ul>
+<ol start="5">
+<li>完成上述配置信息后点击提交，点击网站——点击刚添加的二级域名——域名管理——再次点击刚添加的二级域名——打开后如果显示“恭喜，站点创建成功”，就可以给站点配置SSL证书了。</li>
+<li>点击网站——点击刚添加的二级域名——SSL——Let’s Encrypt——选中刚添加的二级域名——点击申请，然后宝塔面板就会自动帮我们申请SSL证书——保存——开启强制HTTPS</li>
+</ol>
+<h2 id="安装Cloudreve"><a href="#安装Cloudreve" class="headerlink" title="安装Cloudreve"></a>安装Cloudreve</h2><ol start="7">
+<li>打开刚才添加网站的根目录，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /www/wwwroot/cloudreve.hefan64.tk</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>在网站根目录下载安装cloudreve，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://github.com/cloudreve/Cloudreve/releases/download/3.7.1/cloudreve_3.7.1_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>在根目录下新建一个cloudreve文件，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir cloudreve</span><br></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>把cloudreve压缩包解压到cloudreve文件夹里，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf cloudreve_3.7.1_linux_amd64.tar.gz -C cloudreve</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>进入到cloudreve文件里，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd cloudreve </span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>赋予cloudreve可执行权限，在ssh工具中执行下面这条命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x ./cloudreve</span><br></pre></td></tr></table></figure>
+
+<p>13.启动cloudreve</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./cloudreve</span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li>启动成功会得到cloudreve的用户名（Admin user name）和登录秘密（Admin password），以及cloudreve的登录端口号，可以通过服务器IP:端口号的形式，在浏览器里打开cloudreve。</li>
+</ol>
+<h2 id="给Cloudreve进行反向代理"><a href="#给Cloudreve进行反向代理" class="headerlink" title="给Cloudreve进行反向代理"></a>给Cloudreve进行反向代理</h2><ol start="15">
+<li>打开宝塔面板——网站——点击刚才添加的二级域名——反向代理——添加反向代理，填写反向代理配置信息如下：</li>
+</ol>
+<ul>
+<li>代理名称：cloudreve （可以自定义）</li>
+<li>目标URL：<a target="_blank" rel="noopener" href="http://43.134.16.15:5212/">http://43.134.16.15:5212</a> （这里填的是cloudreve的访问地址）</li>
+</ul>
+<ol start="16">
+<li>完成上述配置信息后点击提交，可以通过下面两步检验反向代理是否成功</li>
+</ol>
+<ul>
+<li>点击反向代理目标URL，查看是否可以正常打开</li>
+<li>点击域名管理——再点击刚才添加的二级域名，查看是否可以正常打开</li>
+</ul>
+<ol start="17">
+<li>至此宝塔面板搭建cloudreve私人网盘就完成了，想要深入学习请移步至cloudreve的GitHub项目仓库：<a target="_blank" rel="noopener" href="https://github.com/cloudreve/Cloudreve">https://github.com/cloudreve/Cloudreve</a></li>
+</ol>
+<p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.hefan64.tk">hefanx</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.hefan64.tk/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/">https://blog.hefan64.tk/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.hefan64.tk" target="_blank">Hefanx</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cloudreve/">Cloudreve</a><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%9B%98%E6%90%AD%E5%BB%BA/">网盘搭建</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/01/Alist%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/" title="Alist网盘挂载工具搭建教程【宝塔面板】"><img class="cover" src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Alist%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Alist网盘挂载工具搭建教程【宝塔面板】</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/blog%20avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">hefanx</div><div class="author-info__description">学习笔记和经验分享</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">宝塔面板添加网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Cloudreve"><span class="toc-number">2.</span> <span class="toc-text">安装Cloudreve</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99Cloudreve%E8%BF%9B%E8%A1%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">给Cloudreve进行反向代理</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/" title="Cloudreve搭建个人网盘教程【宝塔面板】"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Cloudreve%E7%BD%91%E7%9B%98.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cloudreve搭建个人网盘教程【宝塔面板】"/></a><div class="content"><a class="title" href="/2023/03/02/Cloudreve%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/" title="Cloudreve搭建个人网盘教程【宝塔面板】">Cloudreve搭建个人网盘教程【宝塔面板】</a><time datetime="2023-03-02T09:50:20.000Z" title="发表于 2023-03-02 17:50:20">2023-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/Alist%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/" title="Alist网盘挂载工具搭建教程【宝塔面板】"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/Alist%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Alist网盘挂载工具搭建教程【宝塔面板】"/></a><div class="content"><a class="title" href="/2023/03/01/Alist%E7%BD%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/" title="Alist网盘挂载工具搭建教程【宝塔面板】">Alist网盘挂载工具搭建教程【宝塔面板】</a><time datetime="2023-03-01T10:10:20.000Z" title="发表于 2023-03-01 18:10:20">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/28/WordPress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="WordPress搭建个人博客教程"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/WordPress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WordPress搭建个人博客教程"/></a><div class="content"><a class="title" href="/2023/02/28/WordPress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="WordPress搭建个人博客教程">WordPress搭建个人博客教程</a><time datetime="2023-02-28T10:20:20.000Z" title="发表于 2023-02-28 18:20:20">2023-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/27/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="宝塔面板国际版aapanel安装教程"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="宝塔面板国际版aapanel安装教程"/></a><div class="content"><a class="title" href="/2023/02/27/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%9B%BD%E9%99%85%E7%89%88aapanel%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="宝塔面板国际版aapanel安装教程">宝塔面板国际版aapanel安装教程</a><time datetime="2023-02-27T02:30:20.000Z" title="发表于 2023-02-27 10:30:20">2023-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/" title="如何通过优选IP提升VPS上网速度"><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/%E4%BC%98%E9%80%89IP.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何通过优选IP提升VPS上网速度"/></a><div class="content"><a class="title" href="/2023/02/24/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%BC%98%E9%80%89IP%E6%8F%90%E5%8D%87VPS%E4%B8%8A%E7%BD%91%E9%80%9F%E5%BA%A6/" title="如何通过优选IP提升VPS上网速度">如何通过优选IP提升VPS上网速度</a><time datetime="2023-02-24T06:40:20.000Z" title="发表于 2023-02-24 14:40:20">2023-02-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By hefanx</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
