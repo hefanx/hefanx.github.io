@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Hugo搭建webstack导航网站教程【GitHub pages】</title>
+      <link href="/2023/03/05/Hugo%E6%90%AD%E5%BB%BAWebstack%E5%AF%BC%E8%88%AA%E7%BD%91%E7%AB%99%E6%95%99%E7%A8%8B%E3%80%90GitHub%20pages%E3%80%91/"/>
+      <url>/2023/03/05/Hugo%E6%90%AD%E5%BB%BAWebstack%E5%AF%BC%E8%88%AA%E7%BD%91%E7%AB%99%E6%95%99%E7%A8%8B%E3%80%90GitHub%20pages%E3%80%91/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装Hugo博客框架"><a href="#安装Hugo博客框架" class="headerlink" title="安装Hugo博客框架"></a>安装Hugo博客框架</h2><ol><li>首先需要安装<a href="https://git-scm.com/">git工具</a>，很简单按提示进行下一步操作，默认安装就可以。其次需要拥有一个GitHub账号，没有的请自行注册。</li><li>下载hugo博客框架，前往<a href="https://github.com/gohugoio/hugo">hugo GitHub仓库</a>下载就可以。我这里下载的是windows-amd64.zip，根据自己的系统自行下载。</li><li>在D盘新建一个Hugo文件，在其Hugo文件下面在创建一个bin文件夹，将下载的hugo windows-amd64.zip压缩包解压到bin文件夹下。</li><li>在Windows控制面板添加一个path环境变量</li></ol><p>打开控制面板——搜索高级——查看高级系统设置——环境变量——用户变量——双击Path——新建——把hugo安装包的路径复制粘贴过来（D:\Hugo\bin）——点击确定保存。注：系统变量添加Path的方法也是一样的。</p><ol start="5"><li>在hugo文件夹下右键Git Bash Here，执行查看hugo版本的命令：hugo version ，可以看到版本号说明安装成功了。</li></ol><h2 id="搭建Hugo本地博客"><a href="#搭建Hugo本地博客" class="headerlink" title="搭建Hugo本地博客"></a>搭建Hugo本地博客</h2><ol start="6"><li>用hugo创建一个博客，在Hugo文件夹下执行命令</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hugo new site myblog</span><br></pre></td></tr></table></figure><p>现在可以前往myblog文件夹下查看生成的文档和内容。</p><ol start="7"><li>前往<a href="https://github.com/shenweiyan/WebStack-Hugo">webstack-hugo仓库</a>下载hugo主题，下载好后把主题压缩包进行解压，然后把主题复制到themes文件夹下面。打开myblog——themes——webstack-hugo——exampleSite（把该文件夹下面的全部文件复制粘贴到myblog根目录下）。</li><li>在本地启动博客网站，<strong>在myblog根目录</strong>下执行命令</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hugo server -t webstack-hugo --buildDrafts     #webstack-hugo是主题的名字</span><br></pre></td></tr></table></figure><p>在浏览器打开生成的本地博客地址：<a href="http://localhost:1313/">http://localhost:1313</a> ，能正常的打开的话就可以开始准备部署到GitHub上了。</p><h2 id="部署到GitHub仓库"><a href="#部署到GitHub仓库" class="headerlink" title="部署到GitHub仓库"></a>部署到GitHub仓库</h2><ol start="9"><li>打开GitHub，新建一个GitHub仓库，注意仓库名称必须是自己的GitHub用户名.github.io 的形式，例如：liming.github.io</li><li>在docs文件夹下生成静态部署文件，请<strong>在myblog根目录</strong>下执行命令</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hugo --theme=webstack-hugo --baseUrl=&quot;https://tandix.github.io/&quot; --buildDrafts     #tandix.github.io是自己的仓库名</span><br></pre></td></tr></table></figure><ol start="11"><li>新版的webstack hugo主题会在docs文件夹下生成静态文件，这就是我们需要上传到GitHub仓库的上的文档和内容，注：旧版本是在public文件夹下生成的。</li><li>在默认浏览器登录自己的GitHub账号，然后再下载GitHub desktop软件，在GitHub desktop上也登录自己的GitHub账号。将刚才创建的liming.github.io仓库拉取（pull）到本地，然后把docs文件夹下的全部文件复制到liming.github.io文件夹下。打开GitHub desktop软件，然后我们会在Changes下看到刚才复制粘贴过来的全部内容。</li><li>在Summary里填写本次更新的备注信息（可以随便填写），然后点击Commit to main更新到本地仓库，然后再点击Push origin推送到GitHub远程仓库。现在可以打开网页端的GitHub仓库查看刚才上传的代码文件了，在浏览器打开liming.github.io就能访问刚搭建的导航网站。</li></ol><p>注，如果你有两个GitHub账号，在上传代码的时候记得先把不使用的GitHub退出一下，如果还不行则前往Windows的控制面板——凭据管理——Windows凭据——删除或修改GitHub的用户名和密码，然后再到浏览器和GitHub desktop上登录GitHub账号。</p><p><strong>扩展补充：</strong></p><p>用git工具上传代码到GitHub仓库的方法</p><ol start="11"><li>注意这是<strong>在docs文件夹</strong>下初始化一个git仓库，执行命令</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure><p>12.将代码提交到缓存区，执行命令</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>13.将缓存区代码提交到本地仓库，执行命令</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m ‘我的hugo博客第一次提交’</span><br></pre></td></tr></table></figure><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/hugo-logo.jpeg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hugo博客 </tag>
+            
+            <tag> 导航网站 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>可道云kodcloud搭建私人网盘教程【宝塔面板】</title>
       <link href="/2023/03/04/%E5%8F%AF%E9%81%93%E4%BA%91kodcloud%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/"/>
       <url>/2023/03/04/%E5%8F%AF%E9%81%93%E4%BA%91kodcloud%E6%90%AD%E5%BB%BA%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98%E6%95%99%E7%A8%8B%E3%80%90%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E3%80%91/</url>
