@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Nginx Proxy Manager反向代理工具搭建教程【Docker】</title>
+      <link href="/2023/03/13/Nginx%20Proxy%20Manager%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E3%80%90Docker%E3%80%91/"/>
+      <url>/2023/03/13/Nginx%20Proxy%20Manager%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E3%80%90Docker%E3%80%91/</url>
+      
+        <content type="html"><![CDATA[<ol><li>首先需要准备一台服务器，我这里使用的是腾讯轻量云服务器，安装的系统镜像是Debian 11，然后用ssh工具连接服务器，我这里使用的ssh工具是<a href="https://github.com/kingToolbox/WindTerm">WindTerm</a>，这是一款GitHub上的免费开源软件。</li><li>其次需要在服务器上安装好Docker，Docker安装教程请参考下面这篇文章：</li></ol><p><a href="https://blog.hefan64.tk/2023/03/12/docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E3%80%90docker%E3%80%91/">Docker安装教程【Docker】</a></p><ol start="3"><li>在docker_data目录下新建一个<a href="https://nginxproxymanager.com/">Nginx Proxy Manager</a>的目录（简称：npm）</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir npm</span><br></pre></td></tr></table></figure><ol start="4"><li>进入到npm目录，然后创建一个nano docker-compose.yml文件</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd npm</span><br><span class="line">nano docker-compose.yml</span><br></pre></td></tr></table></figure><ol start="5"><li>把配置信息复制粘贴到nano docker-compose.yml文件里</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencryp</span><br></pre></td></tr></table></figure><p>按Ctrl+x 进行退出，选择y 进行保存，然后再按回车键</p><ol start="6"><li>检查端口是否被占用，例如：检查81端口</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lsof -i:81</span><br></pre></td></tr></table></figure><p>如果没有返回任何信息，说明端口没有被占用。</p><ol start="7"><li>启动docker-compose</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure><ol start="8"><li>快速查看服务器的IP地址</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl ifconfig.me</span><br></pre></td></tr></table></figure><p>理论上我们输入 <a href="http://ip:81/">http://ip:81</a> 就可以正常访问了。</p><ol start="9"><li>通过默认账号和密码登录Nginx Proxy Manager</li></ol><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Email:    admin@example.com</span><br><span class="line">Password: changeme</span><br></pre></td></tr></table></figure><p>第一次登录，会要求你修改全名、昵称、绑定的邮箱和登录密码。</p><ol start="10"><li>进行反向代理设置</li></ol><ul><li>登录Nginx Proxy Manager——点击Dashboard——Proxy Hosts——Add Proxy Host——填写反向代理的配置信息如下：<ul><li>Domain Names：填写要用来进行反代的域名（例如：npm.hefan64.top）</li><li>Forward Hostname&#x2F;IP：填写反向代理目标网站的IP（例如：43.159.57.70）</li><li>Forward Port：填写反向代理目标网站的访问端口（例如：81）</li><li>Block Common Exploits：开启阻止常见漏洞按钮</li></ul></li><li>完成上述配置信息后点击Save进行保存</li></ul><ol start="11"><li>强制开启SSL证书</li></ol><ul><li>点击右侧的三个 … ——Edit——SSL——选择Request a new SSL Certificate——开启Force SSL按钮——开启I Agree to the按钮——最后点击Save进行保存。</li><li>点击左侧刚添加的域名，就可以通过域名的方式正常访问网站了，至此Nginx Proxy Manager反向代理就完成了。</li></ul><p><img src="https://cdn.staticaly.com/gh/hefanx/blog-tuchuang@master/img/nginx%20proxy%20manager.jpg"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 反向代理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker安装教程【Docker】</title>
       <link href="/2023/03/12/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E3%80%90Docker%E3%80%91/"/>
       <url>/2023/03/12/Docker%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E3%80%90Docker%E3%80%91/</url>
